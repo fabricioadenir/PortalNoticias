@@ -1,0 +1,456 @@
+openapi: 3.0.2
+info:
+  title: "Portal de Notícias - Serviço de notícias REST"
+  description: "Destinado a criação de autores para publicações de notícias e sua respectiva visualização em REST API."
+  version: "0.1.0"
+servers:
+  - url: "http://localhost:8000"
+tags:
+  - name: "autores"
+  - name: "noticias"
+paths:
+  /api/v1/autores/:
+    get:
+      tags:
+        - autores
+      operationId: listAutors
+      description: "Al\xE9m de permitir pesquisar por autor pelo 'id'. Tamb\xE9m \xE9\
+        \ possível\n realizar \na pesquisa\nno seguinte formato:\n\napi/autores?search={valor}\n\
+        \n{valor} =  Pode ser qualquer valor string ou integer, pode conter mais de\
+        \ um valor. Exemplo:\n\napi/autores?search=novidade fernando. \n\n\nA API ir\xE1\
+        \ fazer um filtro retornando\nos autores que existirem com o valor pesquisado,\
+        \ filtrando em (titulo, texto e autor)."
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    nome:
+                      type: string
+                      maxLength: 100
+                  required:
+                  - nome
+          description: ''
+    post:
+      tags:
+        - autores
+      operationId: createAutor
+      description: "Permite a criação de um autor seguindo o schema."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id001
+              properties:
+                nome:
+                  type: string
+                  maxLength: 100
+              required:
+              - nome
+          application/x-www-form-urlencoded:
+            schema: *id001
+          multipart/form-data:
+            schema: *id001
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nome:
+                    type: string
+                    maxLength: 100
+                required:
+                - nome
+          description: ''
+  /api/v1/noticias/:
+    get:
+      tags:
+        - noticias
+      operationId: listNoticias
+      description: "Al\xE9m de permitir pesquisar por notícias pelo 'id'. Tamb\xE9\
+        m \xE9 possível\n realizar \na pesquisa\nno seguinte formato:\n\napi/noticias?search={valor}\n\
+        \n{valor} =  Pode ser qualquer valor string ou integer, pode conter mais de\
+        \ um valor. Exemplo:\n\napi/noticias?search=novidade fernando. \n\n\nA API ir\xE1\
+        \ fazer um filtro retornando\nas notícias que existirem com o valor pesquisado,\
+        \ filtrando em (titulo, texto e autor)."
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    id:
+                      type: integer
+                      readOnly: true
+                    titulo:
+                      type: string
+                      maxLength: 150
+                    texto:
+                      type: string
+                    autor:
+                      type: integer
+                    nome_autor:
+                      type: string
+                      readOnly: true
+                  required:
+                  - titulo
+                  - texto
+                  - autor
+          description: ''
+    post:
+      tags:
+        - noticias
+      operationId: createNoticia
+      description: "Permite a criação de uma nova notícia."
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema: &id002
+              properties:
+                titulo:
+                  type: string
+                  maxLength: 150
+                texto:
+                  type: string
+                autor:
+                  type: integer
+              required:
+              - titulo
+              - texto
+              - autor
+          application/x-www-form-urlencoded:
+            schema: *id002
+          multipart/form-data:
+            schema: *id002
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  titulo:
+                    type: string
+                    maxLength: 150
+                  texto:
+                    type: string
+                  autor:
+                    type: integer
+                  nome_autor:
+                    type: string
+                    readOnly: true
+                required:
+                - titulo
+                - texto
+                - autor
+          description: ''
+  /api/v1/autores/{id}/:
+    get:
+      tags:
+        - autores/{id}
+      operationId: retrieveAutor
+      description: "Al\xE9m de permitir pesquisar por autor pelo 'id'. Tamb\xE9m \xE9\
+        \ possível\n realizar \na pesquisa\nno seguinte formato:\n\napi/autores?search={valor}\n\
+        \n{valor} =  Pode ser qualquer valor string ou integer, pode conter mais de\
+        \ um valor. Exemplo:\n\napi/autores?search=novidade fernando. \n\n\nA API ir\xE1\
+        \ fazer um filtro retornando\nos autores que existirem com o valor pesquisado,\
+        \ filtrando em (titulo, texto e autor)."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this autor.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nome:
+                    type: string
+                    maxLength: 100
+                required:
+                - nome
+          description: ''
+    put:
+      tags:
+        - autores/{id}
+      operationId: updateAutor
+      description: "Permite a atualização de um autor por completo."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this autor.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id003
+              properties:
+                nome:
+                  type: string
+                  maxLength: 100
+              required:
+              - nome
+          application/x-www-form-urlencoded:
+            schema: *id003
+          multipart/form-data:
+            schema: *id003
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nome:
+                    type: string
+                    maxLength: 100
+                required:
+                - nome
+          description: ''
+    patch:
+      tags:
+        - autores/{id}
+      operationId: partial_updateAutor
+      description: "Permite a atualização parcial."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this autor.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id004
+              properties:
+                nome:
+                  type: string
+                  maxLength: 100
+          application/x-www-form-urlencoded:
+            schema: *id004
+          multipart/form-data:
+            schema: *id004
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  nome:
+                    type: string
+                    maxLength: 100
+                required:
+                - nome
+          description: ''
+    delete:
+      tags:
+        - autores/{id}
+      operationId: destroyAutor
+      description: "Permite deletar um autor pelo id."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this autor.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
+  /api/v1/noticias/{id}/:
+    get:
+      tags:
+        - noticias/{id}
+      operationId: retrieveNoticia
+      description: "Al\xE9m de permitir pesquisar por notícias pelo 'id'. Tamb\xE9\
+        m \xE9 possível\n realizar \na pesquisa\nno seguinte formato:\n\napi/noticias?search={valor}\n\
+        \n{valor} =  Pode ser qualquer valor string ou integer, pode conter mais de\
+        \ um valor. Exemplo:\n\napi/noticias?search=novidade fernando. \n\n\nA API ir\xE1\
+        \ fazer um filtro retornando\nas notícias que existirem com o valor pesquisado,\
+        \ filtrando em (titulo, texto e autor)."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this noticia.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  titulo:
+                    type: string
+                    maxLength: 150
+                  texto:
+                    type: string
+                  autor:
+                    type: integer
+                  nome_autor:
+                    type: string
+                    readOnly: true
+                required:
+                - titulo
+                - texto
+                - autor
+          description: ''
+    put:
+      tags:
+        - noticias/{id}
+      operationId: updateNoticia
+      description: "Permite a atualização completa da notícia."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this noticia.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id005
+              properties:
+                titulo:
+                  type: string
+                  maxLength: 150
+                texto:
+                  type: string
+                autor:
+                  type: integer
+              required:
+              - titulo
+              - texto
+              - autor
+          application/x-www-form-urlencoded:
+            schema: *id005
+          multipart/form-data:
+            schema: *id005
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  titulo:
+                    type: string
+                    maxLength: 150
+                  texto:
+                    type: string
+                  autor:
+                    type: integer
+                  nome_autor:
+                    type: string
+                    readOnly: true
+                required:
+                - titulo
+                - texto
+                - autor
+          description: ''
+    patch:
+      tags:
+        - noticias/{id}
+      operationId: partial_updateNoticia
+      description: "Permite a atualização parcial da notícia, não precisando alterar todos os campos."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this noticia.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema: &id006
+              properties:
+                titulo:
+                  type: string
+                  maxLength: 150
+                texto:
+                  type: string
+                autor:
+                  type: integer
+          application/x-www-form-urlencoded:
+            schema: *id006
+          multipart/form-data:
+            schema: *id006
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                properties:
+                  id:
+                    type: integer
+                    readOnly: true
+                  titulo:
+                    type: string
+                    maxLength: 150
+                  texto:
+                    type: string
+                  autor:
+                    type: integer
+                  nome_autor:
+                    type: string
+                    readOnly: true
+                required:
+                - titulo
+                - texto
+                - autor
+          description: ''
+    delete:
+      tags:
+        - noticias/{id}
+      operationId: destroyNoticia
+      description: "Permite deletar uma notícia por seu id."
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this noticia.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: ''
