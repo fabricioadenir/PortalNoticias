@@ -1,0 +1,5 @@
+[run]
+omit =
+    portal_noticias/tests/*
+    environment/*
+    docs/*

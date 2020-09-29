@@ -1,0 +1,5 @@
+[pycodestyle]
+count = True
+max-line-length = 120
+exclude = portal_noticias/tests,environment,virtualenv
+statistics = True
