@@ -7,12 +7,60 @@
         }
     },
     {
+        "model": "portal_noticias.autor",
+        "pk": 2,
+        "fields": {
+            "nome": "Liliane Nakagawa"
+        }
+    },
+    {
+        "model": "portal_noticias.autor",
+        "pk": 3,
+        "fields": {
+            "nome": "Fernando Amorim"
+        }
+    },
+    {
+        "model": "portal_noticias.autor",
+        "pk": 4,
+        "fields": {
+            "nome": "Fabricio Adenir da Silva"
+        }
+    },
+    {
         "model": "portal_noticias.noticia",
         "pk": 1,
         "fields": {
             "titulo": "Equipamentos 3D são capazes de imprimir de um tudo — agora, até carnes",
-            "texto": "Em 1984, um estudante de engenharia perguntou ao americano Chuck Hull, inventor da impressora 3D, qual \nseria o futuro da máquina que, àquela altura, reproduzia formas rudimentares de resinas. “Vai chegar o dia em\n que seremos capazes de imprimir qualquer coisa, até mesmo um automóvel”, disse Hull. Ele estava certo, mas Alguns minutos depois, elas imprimem filés que, pelo menos visualmente, são idênticos aos bifes tradicionais.\n Segundo a Redefine, startup criada em 2018 com a ambição de revolucionar o setor de alimentos, o sabor \nremete a carnes de verdade, nem de longe lembrando um produto sintético. “Conseguimos obter a mesma\n consistência de um bife convencional, inclusive imitando músculos e gorduras”, diz Alexey Tomsov, engenheiro\n da companhia. As máquinas foram concebidas para imprimir 20 quilos por hora, o suficiente para abastecer\n um restaurante de porte médio. A ideia é inicialmente levar a novidade para pequenos bistrôs ainda em 2020, e\n oferecer o equipamento ao mercado, para qualquer um que quiser comprá-lo, no começo de 2021. O preço não\n foi definido\n As grandes empresas estão atentas ao novo segmento. A rede americana de fast food KFC, uma das maiores do\n mundo, vai testar no mercado russo, em parceria com a startup 3D Bioprinting Solutions, nuggets feitos por",
+            "texto": "Em 1984, um estudante de engenharia perguntou ao americano Chuck Hull, inventor da impressora 3D, qual seria o futuro da máquina que, àquela altura, reproduzia formas rudimentares de resinas. “Vai chegar o dia em que seremos capazes de imprimir qualquer coisa, até mesmo um automóvel”, disse Hull. Ele estava certo, mas Alguns minutos depois, elas imprimem filés que, pelo menos visualmente, são idênticos aos bifes tradicionais. Segundo a Redefine, startup criada em 2018 com a ambição de revolucionar o setor de alimentos, o sabor remete a carnes de verdade, nem de longe lembrando um produto sintético. “Conseguimos obter a mesma consistência de um bife convencional, inclusive imitando músculos e gorduras”, diz Alexey Tomsov, engenheiro da companhia. As máquinas foram concebidas para imprimir 20 quilos por hora, o suficiente para abastecer um restaurante de porte médio. A ideia é inicialmente levar a novidade para pequenos bistrôs ainda em 2020, e oferecer o equipamento ao mercado, para qualquer um que quiser comprá-lo, no começo de 2021. O preço não foi definido As grandes empresas estão atentas ao novo segmento. A rede americana de fast food KFC, uma das maiores do mundo, vai testar no mercado russo, em parceria com a startup 3D Bioprinting Solutions, nuggets feitos por",
             "autor": 1
+        }
+    },
+    {
+        "model": "portal_noticias.noticia",
+        "pk": 2,
+        "fields": {
+            "titulo": "Python lidera nas pesquisas.",
+            "texto": "uma das possíveis explicações para que o Python mantenha a liderança por tanto tempo, é a grande procura pelos próprios estudantes em linguagem de programação. Uma outra hipótese é que se trata de uma linguagem frequentemente utilizada profissionalmente e em domínios de alto nível (machine learning, por exemplo), em razão da enorme coleção de bibliotecas especializadas de alta qualidade.",
+            "autor": 2
+        }
+    },
+    {
+        "model": "portal_noticias.noticia",
+        "pk": 3,
+        "fields": {
+            "titulo": "Covid-19",
+            "texto": "Umas das doenças mas transmissíveis da história e com maior potencial de problemas respiratórios. O mundo não é mais o mesmo depois da pandemia",
+            "autor": 3
+        }
+    },
+    {
+        "model": "portal_noticias.noticia",
+        "pk": 4,
+        "fields": {
+            "titulo": "API de Notícias.",
+            "texto": "Uma API de notícias é algo incrível e que permite de forma simples criações de notícias. Podendo inserir um titulo, texto e um autor, que tem relação direta com uma tabela onde são cadastrados os autores. Incrível mesmo alem de cadastrar notícias é poder visualizá-las e ainda mais, poder realizar filtros de busca por palavras chaves. Disponível em: 'https://github.com/fabricioadenir/PortalNoticias' confira.",
+            "autor": 4
         }
     }
 
