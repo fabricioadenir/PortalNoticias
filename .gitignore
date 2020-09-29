@@ -125,3 +125,4 @@ dmypy.json
 
 # Django
 portal_noticias/migrations
+portal_noticias/migrations/
